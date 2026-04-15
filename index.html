@@ -1,16 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>HTML Test Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07090d;
+      --accent: #00ffcc;
+      --accent-glow: rgba(0,255,204,0.25);
+      --text: #dde4f0;
+      --text-muted: #4e6070;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Oxanium', sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,204,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,204,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(140deg, #fff 20%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .btn:hover {
+      background: rgba(0,255,204,0.1);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+  </style>
 </head>
 <body>
-    <h1>It Works!</h1>
-    <p>This is a simple HTML test page to verify your browser is rendering correctly.</p>
-    <ul>
-        <li>Test Item 1</li>
-        <li>Test Item 2</li>
-    </ul>
-    <button onclick="alert('JavaScript is working!')">Test JavaScript</button>
+
+  <div class="container">
+    <h1>FocusGuard</h1>
+    <p class="tagline">Control your kids screen time this summer</p>
+
+    <a href="Download/" class="btn">Download</a>
+  </div>
+
 </body>
 </html>
