@@ -76,6 +76,16 @@
       transform: translateY(-3px);
     }
 
+    .icon {
+      margin-bottom: 0.8rem;
+    }
+
+    .icon img {
+      width: 55px;
+      height: auto;
+      filter: brightness(0) invert(1); /* makes it white 🔥 */
+    }
+
     .card-title {
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
@@ -111,14 +121,6 @@
       letter-spacing: 0.08em;
     }
 
-    .icon {
-      margin-bottom: 0.6rem;
-    }
-
-    svg {
-      fill: white;
-    }
-
   </style>
 </head>
 <body>
@@ -129,39 +131,36 @@
     <!-- WINDOWS -->
     <div class="card">
       <div class="icon">
-        <!-- Windows logo -->
-        <svg width="40" height="40" viewBox="0 0 24 24">
-          <path d="M3 5l8-1v8H3V5zm9-1l9-1v9h-9V4zM3 13h8v8l-8-1v-7zm9 0h9v9l-9-1v-8z"/>
-        </svg>
+        <img src="../websiteimages/windowslogo.png">
       </div>
-
       <div class="card-title">Windows 11</div>
       <div class="sub">Download FocusGuard for Windows</div>
-
       <a href="../appdownload/FocusGuard.txt" download class="btn">Download</a>
     </div>
 
-    <!-- MAC -->
+    <!-- MACOS -->
     <div class="card">
       <div class="icon">
-        <!-- Apple logo (simple) -->
-        <svg width="40" height="40" viewBox="0 0 24 24">
-          <path d="M16 13c0-3 2-4 2-4s-1-2-3-2c-1.5 0-2.5 1-3 1s-1.5-1-3-1c-2 0-4 2-4 5s2 7 4 7c1.5 0 2-1 3-1s1.5 1 3 1c1.5 0 3-2 3-5z"/>
-        </svg>
+        <img src="../websiteimages/macoslogo.png">
       </div>
-
       <div class="card-title">macOS</div>
       <div class="coming">Coming Soon</div>
     </div>
 
     <!-- IOS -->
     <div class="card">
+      <div class="icon">
+        <img src="../websiteimages/applelogo.png">
+      </div>
       <div class="card-title">iOS</div>
       <div class="coming">Coming Soon</div>
     </div>
 
     <!-- ANDROID -->
     <div class="card">
+      <div class="icon">
+        <img src="../websiteimages/androidlogo.png">
+      </div>
       <div class="card-title">Android</div>
       <div class="coming">Coming Soon</div>
     </div>
