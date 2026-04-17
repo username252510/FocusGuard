@@ -1,18 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard Pricing</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07090d;
+      --card: #0c0f15;
+      --border: #161c27;
+      --accent: #00ffcc;
+      --accent-glow: rgba(0,255,204,0.25);
+      --text: #dde4f0;
+      --text-muted: #4e6070;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Oxanium', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,204,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,204,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 500px;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(140deg, #fff 20%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      transform: translateY(-3px);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .features li {
+      list-style: none;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      transition: 0.2s;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .btn:hover {
+      background: rgba(0,255,204,0.1);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a paragraph of text on a simple HTML page.</p>
-    
-    <!-- This is a link -->
-    <a href="https://google.com">Visit Google</a>
-    
-    <!-- This is an image -->
-    <img src="image.jpg" alt="Description of image" width="300">
+
+  <div class="container">
+    <h1>Pricing</h1>
+
+    <div class="card">
+      <div class="title">FocusGuard License Key</div>
+      <div class="price">$19.99 (one-time)</div>
+
+      <ul class="features">
+        <li>• Full screen time control</li>
+        <li>• App blocking</li>
+        <li>• Custom schedules</li>
+        <li>• Usage tracking + stats</li>
+        <li>• Simple and easy to use interface</li>
+      </ul>
+
+      <a href="Purchase/" class="btn">Purchase</a>
+
+      <div class="note">
+        One-time purchase. No subscription required.
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>
