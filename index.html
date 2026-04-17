@@ -16,6 +16,7 @@
       --text: #dde4f0;
       --text-muted: #4e6070;
       --border: #161c27;
+      --nav-bg: rgba(12,15,21,0.8);
     }
 
     body.light {
@@ -24,9 +25,10 @@
       --text: #111;
       --text-muted: #555;
       --border: #ddd;
+      --nav-bg: rgba(255,255,255,0.85);
     }
 
-    /* ACCESSIBILITY MODE */
+    /* ACCESSIBILITY */
     body.accessibility {
       font-size: 1.15rem;
       --text: #ffffff;
@@ -61,7 +63,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1.5rem;
-      background: rgba(12,15,21,0.8);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
@@ -116,7 +118,17 @@
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
-    /* GRID BG */
+    /* accessibility navbar scaling */
+    body.accessibility .nav-link {
+      font-size: 0.95rem;
+    }
+
+    body.accessibility .nav-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.9rem;
+    }
+
+    /* GRID */
     body::before {
       content: '';
       position: fixed;
@@ -147,10 +159,22 @@
       -webkit-text-fill-color: transparent;
     }
 
+    /* FIX LIGHT MODE TITLE */
+    body.light h1 {
+      background: linear-gradient(140deg, #000 20%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .tagline {
       margin-top: 1rem;
       font-size: 1.1rem;
       color: var(--text-muted);
+    }
+
+    /* accessibility tagline fix */
+    body.accessibility .tagline {
+      font-size: 1.3rem;
     }
 
     .btn {
@@ -208,7 +232,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <div class="navbar">
     <div class="nav-left">
       <a href="/" class="nav-link active">Home</a>
@@ -231,18 +254,9 @@
 
     <div class="about-box">
       <h2>About</h2>
-
-      <p>
-        FocusGuard is an app designed for parents to help manage their child’s screen time in a balanced way that is fair to both the parent and the child. During unstructured times like summer, kids often spend too much time on their electronics playing games and using apps. This makes it difficult to do productive activities like chores, reading, playing outside, etc.
-      </p>
-
-      <p>
-        Our solution, FocusGuard, allows parents to automatically block distracting apps, while also not controlling everything the child does, which allows them to still have freedom to enjoy their devices responsibly. By reducing constant monitoring and minimizing conflict, FocusGuard helps kids to balance screen time and real life activities.
-      </p>
-
-      <p>
-        With a simple and easy to use design, FocusGuard is built for parents who want control without stress, and for children who need structure without feeling restricted.
-      </p>
+      <p>FocusGuard is an app designed for parents to help manage their child’s screen time in a balanced way...</p>
+      <p>Our solution, FocusGuard, allows parents to automatically block distracting apps while still giving children freedom...</p>
+      <p>With a simple and easy to use design, FocusGuard is built for parents who want control without stress...</p>
 
       <a href="Pricing/" class="btn">Pricing</a>
     </div>
