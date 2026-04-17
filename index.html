@@ -43,10 +43,11 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: all 0.25s ease; /* 🔥 SMOOTH EVERYTHING */
     }
 
     html, body {
-      overflow-x: hidden; /* 🔥 FIX SIDE SCROLL */
+      overflow-x: hidden;
     }
 
     body {
@@ -62,7 +63,7 @@
       top: 0;
       z-index: 10;
       display: flex;
-      flex-wrap: wrap; /* 🔥 ALLOW WRAP */
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1rem;
@@ -73,7 +74,7 @@
 
     .nav-left {
       display: flex;
-      flex-wrap: wrap; /* 🔥 WRAP BUTTONS */
+      flex-wrap: wrap;
       gap: 0.5rem;
     }
 
@@ -152,9 +153,9 @@
     }
 
     h1 {
-      font-size: clamp(2.5rem, 10vw, 5rem); /* 🔥 MOBILE FIX */
+      font-size: clamp(2.5rem, 10vw, 5rem);
       font-weight: 800;
-      letter-spacing: 0.05em; /* 🔥 LESS CUT OFF */
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       background: linear-gradient(140deg, #fff 20%, var(--accent) 100%);
       -webkit-background-clip: text;
@@ -193,6 +194,13 @@
     .btn:hover {
       background: rgba(0,255,204,0.1);
       box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    /* 🔍 FIX BUTTON SCALING */
+    body.accessibility .btn {
+      font-size: 1.05rem;
+      padding: 1rem 2rem;
     }
 
     .about-box {
@@ -207,6 +215,7 @@
     .about-box:hover {
       border-color: var(--accent);
       box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-3px);
     }
 
     .about-box h2 {
