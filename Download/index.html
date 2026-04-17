@@ -16,12 +16,38 @@
       --accent-glow: rgba(0,255,204,0.25);
       --text: #dde4f0;
       --text-muted: #4e6070;
+      --nav-bg: rgba(12,15,21,0.8);
+    }
+
+    body.light {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #111;
+      --text-muted: #555;
+      --border: #ddd;
+      --nav-bg: rgba(255,255,255,0.9);
+    }
+
+    body.accessibility {
+      font-size: 1.15rem;
+      --text: #ffffff;
+      --text-muted: #d0d0d0;
+    }
+
+    body.light.accessibility {
+      --text: #000000;
+      --text-muted: #222;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: all 0.25s ease;
+    }
+
+    html, body {
+      overflow-x: hidden;
     }
 
     body {
@@ -31,6 +57,80 @@
       min-height: 100vh;
     }
 
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    body.accessibility .nav-link {
+      font-size: 0.9rem;
+    }
+
+    body.accessibility .nav-btn {
+      font-size: 0.85rem;
+    }
+
+    /* GRID */
     body::before {
       content: '';
       position: fixed;
@@ -46,19 +146,25 @@
       position: relative;
       z-index: 1;
       max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
+      margin: auto;
+      padding: 2rem 1rem 4rem;
       text-align: center;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.5rem, 10vw, 4rem);
       font-weight: 800;
       text-transform: uppercase;
       background: linear-gradient(140deg, #fff 20%, var(--accent) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    body.light h1 {
+      background: linear-gradient(140deg, #000 20%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .card {
@@ -67,28 +173,22 @@
       border-radius: 10px;
       padding: 1.5rem;
       margin-bottom: 1.2rem;
-      transition: 0.2s;
     }
 
     .card:hover {
       border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      box-shadow: 0 0 20px var(--accent-glow);
       transform: translateY(-3px);
-    }
-
-    .icon {
-      margin-bottom: 0.8rem;
     }
 
     .icon img {
       width: 55px;
-      height: auto;
-      filter: brightness(0) invert(1); /* makes it white 🔥 */
+      filter: brightness(0) invert(1);
     }
 
     .card-title {
       font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
     }
 
     .sub {
@@ -105,8 +205,6 @@
       text-decoration: none;
       border-radius: 6px;
       font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      transition: 0.2s;
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
@@ -115,20 +213,38 @@
       box-shadow: 0 0 20px var(--accent-glow);
     }
 
+    body.accessibility .btn {
+      font-size: 1.05rem;
+      padding: 1rem 2rem;
+    }
+
     .coming {
       color: var(--text-muted);
       font-size: 0.8rem;
-      letter-spacing: 0.08em;
     }
 
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="../" class="nav-link">Home</a>
+      <a href="../Download/" class="nav-link active">Download</a>
+      <a href="../Pricing/" class="nav-link">Pricing</a>
+      <a href="../Pricing/Purchase/" class="nav-link">Purchase</a>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn" onclick="toggleLight()">Light</button>
+      <button class="nav-btn" onclick="toggleAccess()">A+</button>
+    </div>
+  </div>
+
   <div class="container">
     <h1>Downloads</h1>
 
-    <!-- WINDOWS -->
     <div class="card">
       <div class="icon">
         <img src="../websiteimages/windowslogo.png">
@@ -138,7 +254,6 @@
       <a href="../appdownload/FocusGuard.txt" download class="btn">Download</a>
     </div>
 
-    <!-- MACOS -->
     <div class="card">
       <div class="icon">
         <img src="../websiteimages/macoslogo.png">
@@ -147,7 +262,6 @@
       <div class="coming">Coming Soon</div>
     </div>
 
-    <!-- IOS -->
     <div class="card">
       <div class="icon">
         <img src="../websiteimages/applelogo.png">
@@ -156,7 +270,6 @@
       <div class="coming">Coming Soon</div>
     </div>
 
-    <!-- ANDROID -->
     <div class="card">
       <div class="icon">
         <img src="../websiteimages/androidlogo.png">
@@ -165,16 +278,35 @@
       <div class="coming">Coming Soon</div>
     </div>
 
-    <!-- LINUX -->
-<div class="card">
-  <div class="icon">
-    <img src="../websiteimages/linuxlogo.png">
-  </div>
-  <div class="card-title">Linux</div>
-  <div class="coming">Coming Soon</div>
-</div>
+    <div class="card">
+      <div class="icon">
+        <img src="../websiteimages/linuxlogo.png">
+      </div>
+      <div class="card-title">Linux</div>
+      <div class="coming">Coming Soon</div>
+    </div>
 
   </div>
+
+  <script>
+    function toggleLight() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("lightMode", document.body.classList.contains("light"));
+    }
+
+    function toggleAccess() {
+      document.body.classList.toggle("accessibility");
+      localStorage.setItem("accessMode", document.body.classList.contains("accessibility"));
+    }
+
+    if (localStorage.getItem("lightMode") === "true") {
+      document.body.classList.add("light");
+    }
+
+    if (localStorage.getItem("accessMode") === "true") {
+      document.body.classList.add("accessibility");
+    }
+  </script>
 
 </body>
 </html>
