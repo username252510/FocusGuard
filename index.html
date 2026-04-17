@@ -25,7 +25,7 @@
       --text: #111;
       --text-muted: #555;
       --border: #ddd;
-      --nav-bg: rgba(255,255,255,0.85);
+      --nav-bg: rgba(255,255,255,0.9);
     }
 
     body.accessibility {
@@ -45,22 +45,27 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: hidden; /* 🔥 FIX SIDE SCROLL */
+    }
+
     body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Oxanium', sans-serif;
       min-height: 100vh;
-      overflow-x: hidden;
     }
 
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 10;
       display: flex;
+      flex-wrap: wrap; /* 🔥 ALLOW WRAP */
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 0.8rem 1rem;
       background: var(--nav-bg);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
@@ -68,18 +73,19 @@
 
     .nav-left {
       display: flex;
-      gap: 1rem;
+      flex-wrap: wrap; /* 🔥 WRAP BUTTONS */
+      gap: 0.5rem;
     }
 
     .nav-link {
       text-decoration: none;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
-      padding: 0.4rem 0.8rem;
+      padding: 0.3rem 0.6rem;
       border-radius: 5px;
-      transition: 0.2s;
       border: 1px solid transparent;
+      white-space: nowrap;
     }
 
     .nav-link:hover {
@@ -96,18 +102,18 @@
 
     .nav-right {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
     }
 
     .nav-btn {
       background: transparent;
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 0.4rem 0.7rem;
-      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
       border-radius: 5px;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     .nav-btn:hover {
@@ -117,14 +123,14 @@
     }
 
     body.accessibility .nav-link {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     body.accessibility .nav-btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
     }
 
+    /* GRID */
     body::before {
       content: '';
       position: fixed;
@@ -140,15 +146,15 @@
       position: relative;
       z-index: 1;
       max-width: 900px;
-      padding: 3rem 1.5rem 5rem;
+      padding: 2rem 1rem 4rem;
       margin: auto;
       text-align: center;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 10vw, 5rem); /* 🔥 MOBILE FIX */
       font-weight: 800;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.05em; /* 🔥 LESS CUT OFF */
       text-transform: uppercase;
       background: linear-gradient(140deg, #fff 20%, var(--accent) 100%);
       -webkit-background-clip: text;
@@ -163,47 +169,44 @@
 
     .tagline {
       margin-top: 1rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-muted);
+      padding: 0 0.5rem;
     }
 
     body.accessibility .tagline {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
     }
 
     .btn {
       margin-top: 2rem;
       display: inline-block;
-      padding: 0.8rem 1.8rem;
+      padding: 0.7rem 1.6rem;
       border: 1px solid var(--accent);
       color: var(--accent);
       text-decoration: none;
       border-radius: 6px;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      transition: 0.2s;
+      font-size: 0.85rem;
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .btn:hover {
       background: rgba(0,255,204,0.1);
-      box-shadow: 0 0 20px var(--accent-glow), 0 0 10px var(--accent-glow);
-      transform: translateY(-2px);
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .about-box {
-      margin-top: 4rem;
-      padding: 2rem;
+      margin-top: 3rem;
+      padding: 1.5rem;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 10px;
       text-align: left;
-      transition: 0.2s;
     }
 
     .about-box:hover {
       border-color: var(--accent);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6), 0 0 15px var(--accent-glow);
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
     .about-box h2 {
@@ -215,11 +218,6 @@
       color: var(--text-muted);
       margin-bottom: 1rem;
       line-height: 1.6;
-    }
-
-    body.accessibility .btn {
-      font-size: 1rem;
-      padding: 1rem 2rem;
     }
 
   </style>
