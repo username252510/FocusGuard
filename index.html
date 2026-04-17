@@ -10,10 +10,25 @@
   <style>
     :root {
       --bg: #07090d;
+      --card: #0c0f15;
       --accent: #00ffcc;
       --accent-glow: rgba(0,255,204,0.25);
       --text: #dde4f0;
       --text-muted: #4e6070;
+      --border: #161c27;
+    }
+
+    body.light {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #111;
+      --text-muted: #555;
+      --border: #ddd;
+    }
+
+    body.accessibility {
+      font-size: 1.1rem;
+      filter: contrast(1.2);
     }
 
     * {
@@ -27,12 +42,71 @@
       color: var(--text);
       font-family: 'Oxanium', sans-serif;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      text-align: center;
       overflow-x: hidden;
     }
 
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: rgba(12,15,21,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-link.active {
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.7rem;
+      font-size: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* GRID BG */
     body::before {
       content: '';
       position: fixed;
@@ -49,6 +123,8 @@
       z-index: 1;
       max-width: 900px;
       padding: 3rem 1.5rem 5rem;
+      margin: auto;
+      text-align: center;
     }
 
     h1 {
@@ -65,7 +141,6 @@
       margin-top: 1rem;
       font-size: 1.1rem;
       color: var(--text-muted);
-      letter-spacing: 0.05em;
     }
 
     .btn {
@@ -78,43 +153,31 @@
       border-radius: 6px;
       font-size: 0.9rem;
       letter-spacing: 0.1em;
-      transition: all 0.2s ease;
+      transition: 0.2s;
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .btn:hover {
       background: rgba(0,255,204,0.1);
       box-shadow: 0 0 20px var(--accent-glow);
-      transform: translateY(-2px);
     }
 
-    /* ABOUT BOX */
     .about-box {
       margin-top: 4rem;
       padding: 2rem;
-      background: #0c0f15;
-      border: 1px solid #161c27;
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 10px;
       text-align: left;
-      transition: 0.2s;
-    }
-
-    .about-box:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
     }
 
     .about-box h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       color: var(--accent);
+      margin-bottom: 1rem;
     }
 
     .about-box p {
       color: var(--text-muted);
-      font-size: 0.95rem;
       margin-bottom: 1rem;
       line-height: 1.6;
     }
@@ -123,32 +186,66 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="Download/" class="nav-link">Download</a>
+      <a href="Pricing/" class="nav-link">Pricing</a>
+      <a href="Pricing/Purchase/" class="nav-link">Purchase</a>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn" onclick="toggleLight()">Light</button>
+      <button class="nav-btn" onclick="toggleAccess()">A+</button>
+    </div>
+  </div>
+
   <div class="container">
     <h1>FocusGuard</h1>
     <p class="tagline">Control your kids screen time this summer</p>
 
     <a href="Download/" class="btn">Download</a>
 
-    <!-- ABOUT SECTION -->
     <div class="about-box">
       <h2>About</h2>
 
       <p>
-        FocusGuard is an app designed for parents to help manage their child’s screen time in a balanced way that is fair to both the parent and the child. During unstructured times like summer, kids often spend too much time on their electronics playing games and using apps. This makes it difficult to do productive activities like chores, reading, playing outside, etc.
+        FocusGuard is an app designed for parents to help manage their child’s screen time in a balanced way that is fair to both the parent and the child...
       </p>
 
       <p>
-        Our solution, FocusGuard, allows parents to automatically block distracting apps, while also not controlling everything the child does, which allows them to still have freedom to enjoy their devices responsibly. By reducing constant monitoring and minimizing conflict, FocusGuard helps kids to balance screen time and real life activities.
+        Our solution, FocusGuard, allows parents to automatically block distracting apps while still giving children freedom...
       </p>
 
       <p>
-        With a simple and easy to use design, FocusGuard is built for parents who want control without stress, and for children who need structure without feeling restricted.
+        With a simple and easy to use design, FocusGuard is built for parents who want control without stress...
       </p>
 
       <a href="Pricing/" class="btn">Pricing</a>
     </div>
-
   </div>
+
+  <script>
+    function toggleLight() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("lightMode", document.body.classList.contains("light"));
+    }
+
+    function toggleAccess() {
+      document.body.classList.toggle("accessibility");
+      localStorage.setItem("accessMode", document.body.classList.contains("accessibility"));
+    }
+
+    // LOAD SAVED SETTINGS
+    if (localStorage.getItem("lightMode") === "true") {
+      document.body.classList.add("light");
+    }
+
+    if (localStorage.getItem("accessMode") === "true") {
+      document.body.classList.add("accessibility");
+    }
+  </script>
 
 </body>
 </html>
